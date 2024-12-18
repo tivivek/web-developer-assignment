@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import { getQuotes } from '../api/Api';
 import { useNavigate } from 'react-router-dom';
 import { ImageIcon, PlusIcon, RefreshCwIcon } from 'lucide-react';
@@ -6,7 +6,6 @@ import placeholderImage from '../assets/placeholderImage.png';
 
 const QuoteListPage = () => {
   const navigate = useNavigate();
-  const newContentRef = useRef(null);
 
   const [allQuotes, setQuotes] = useState([]);
   const [offset, setOffset] = useState(0);
@@ -93,8 +92,8 @@ const QuoteListPage = () => {
               {renderQuoteImage(quote)}
             </div>
             <div className="p-4 space-y-2">
-              <h2 className="text-lg font-bold text-gray-800 line-clamp-2">
-                "{quote?.text}"
+              <h2 className="text-lg font-bold text-gray-800 line-clamp-2 ml-1">
+                {quote?.text}
               </h2>
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
@@ -102,8 +101,8 @@ const QuoteListPage = () => {
                 </div>
 
                 <div className="flex items-center justify-between text-sm text-gray-600">
-                  <p className="truncate">{quote?.username}</p>
-                  <p>{new Date(quote?.created_at).toLocaleDateString()}</p>
+                  <p className="truncate mr-2">{quote?.username}</p>
+                  <p>{new Date(quote?.createdAt).toLocaleDateString()}</p>
                 </div>
               </div>
             </div>
