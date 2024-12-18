@@ -20,13 +20,9 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
-    console.error('API Error:', error);
-    toast.error(error.response?.data?.message || 'Something went wrong!', {
-      position: toast.POSITION.BOTTOM_RIGHT,
-      autoClose: 5000,
-      hideProgressBar: true,
-      closeButton: true,
-    });
+    const errorMessage = error?.response?.data || 'Something went wrong!';
+    console.error(errorMessage, 'API Error:', error);
+    toast.error(errorMessage);
     return Promise.reject(error);
   },
 );

@@ -1,4 +1,4 @@
-import axiosInstance from './axiosInstance';
+import axiosInstance from './fetcher';
 
 export const loginUser = (username, otp) =>
   axiosInstance.post('/login', { username, otp });
@@ -12,7 +12,7 @@ export const uploadImage = (file) => {
   );
 };
 
-export const createQuote = (text, mediaUrl) =>
+export const createQuote = ({ text, mediaUrl }) =>
   axiosInstance.post('/postQuote', { text, mediaUrl });
 
 export const getQuotes = (limit, offset) =>
